@@ -1,9 +1,7 @@
-print('Hello World')
 import numpy as np
 import os,random
 import matplotlib.pyplot as plt
 import pylab as pylab
-from numpy import linalg as LA
 import scipy.optimize
 
 def dataReducer(data, reductionlevel):
@@ -69,7 +67,7 @@ def multipleResiduals(p,x,yval):
     err = yval - parin
     return err
 
-filename = "H:\Google\Research\Software\wmoss\TPNIOF14forwmoss.dat"
+filename = "H:\Google\Research\Software\wmoss\TPNIOF14forwmoss.dat" #Test Data Path - Go Through GUI
 data = []
 data = pylab.loadtxt(filename)
 rednumber=4

@@ -65,7 +65,7 @@ def lorentzian(x,hwhm,cent,intense,back=0):
 def residuals(p,y,x):
     err = y - lorentzian(x,p)
     return err
-#Residual function for fitting multiple parameters.
+#Residual function for fitting multiple curves.
 def multipleResiduals(p,x,yval):
     parin= np.zeros(len(x))
     for i in range(0,len(p),3):
@@ -101,11 +101,11 @@ y_bg_corr = new - background
 #It should be able to accept an unlimited number.
 #It is set for 12 sets of parameters. It needs to be able to do 1,2,5,6,12
 p = [0.34,-0.2,-800,0.34,-0.15,-750,0.34,0.11,-500,0.34,-0.25,-888,0.34,-0.2,-800,0.34,-0.15,-750,0.34,0.11,-500,0.34,-0.25,-888,0.34,-0.2,-800,0.34,-0.15,-750,0.34,0.11,-500,0.34,-0.25,-888]  # [hwhm, peak center, intensity] #
-pbest = scipy.optimize.leastsq(multipleResiduals,p,args=(newVelocity[ind_bg_mid],y_bg_corr[ind_bg_mid]),full_output=1)
+pBest = scipy.optimize.leastsq(multipleResiduals,p,args=(newVelocity[ind_bg_mid],y_bg_corr[ind_bg_mid]),full_output=1)
 fitsum=np.zeros(len(newVelocity))
-for i in range(0,len(pbest[0][:]),3):
-    fit = lorentzian(newVelocity,pbest[0][i],pbest[0][i+1],pbest[0][i+2],background)
-    fitsum= np.add(fitsum,lorentzian(newVelocity,pbest[0][i],pbest[0][i+1],pbest[0][i+2]))
+for i in range(0,len(pBest[0][:]),3):
+    fit = lorentzian(newVelocity,pBest[0][i],pBest[0][i+1],pBest[0][i+2],background)
+    fitsum= np.add(fitsum,lorentzian(newVelocity,pBest[0][i],pBest[0][i+1],pBest[0][i+2]))
     pylab.plot(newVelocity,fit,'r-',lw=2, label=i)
 pylab.plot(newVelocity,new,'b-')
 fitsum=np.add(fitsum,background)

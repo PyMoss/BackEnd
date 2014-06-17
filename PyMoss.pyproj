@@ -6,7 +6,7 @@
     <ProjectGuid>bf680a75-96a8-424b-94eb-8f6f79fcaf2d</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>PyMoss.py</StartupFile>
+    <StartupFile>index.pyw</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,6 +25,9 @@
   <ItemGroup>
     <Compile Include="index.pyw" />
     <Compile Include="PyMoss.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
